@@ -12,7 +12,7 @@ import java.util.List;
 
 public class FileInputStreamExample {
     public static List<User> loadUsers(){
-        String userCsvFileLocation = "/Users/ebuka/Documents/Practice/users.csv"; // get location of file beware of absolute and relative path
+        String userCsvFileLocation = "/Users/ebuka/Documents/Practice/demo-example-envelope-20221128.xml"; // get location of file beware of absolute and relative path
         List<User> users = new ArrayList<>();
         try{
 
@@ -47,6 +47,22 @@ public class FileInputStreamExample {
     }
 
     public static void main(String[] args) {
-        loadUsers();
+        //loadUsers();
+        System.out.println("Formatted phone number: " + formatPhoneNumber(new int[]{1,2,3,4,5,6,7,8,9,0}));
+    }
+
+    public static String formatPhoneNumber(int[] numberArray){
+        int length = numberArray.length;
+        StringBuilder phoneNumber = new StringBuilder();
+        if (length == 10){
+            phoneNumber.append("(");
+            for(int i = 0; i < length; i++){
+                if(i == 3) phoneNumber.append(") ");
+                if(i == 6) phoneNumber.append("-");
+                phoneNumber.append(numberArray[i]);
+            }
+        }
+
+        return phoneNumber.toString();
     }
 }
